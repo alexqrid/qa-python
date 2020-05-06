@@ -1,0 +1,22 @@
+- job:
+    name: test-qa-pipeline
+    description: "First JJB Project, Pipeline"
+    project-type: pipeline
+
+    pipeline-scm:
+      scm:
+        - git:
+            url: git@github.com:snicks92/qa-python.git
+            credentials-id: 7445ece3-d16f-482c-bef5-eac05a67bd7d
+            branches:
+              - origin/lection11_2
+        script-path: "lection11/jenkins_files/simple-pipeline.groovy"
+
+
+    wrappers:
+      - timestamps
+      - workspace-cleanup
+
+    triggers:
+      - pollscm:
+          cron: "* * * * *"

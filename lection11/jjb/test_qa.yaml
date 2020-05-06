@@ -1,0 +1,39 @@
+- scm:
+    name: qa-python-scm
+
+    scm:
+      - git:
+          url: git@github.com:snicks92/qa-python.git
+          credentials-id: 7445ece3-d16f-482c-bef5-eac05a67bd7d
+          basedir: src/qa-python
+          branches:
+            - origin/lection11_2
+
+
+- job:
+    name: test-project
+    description: "First JJB Project"
+    project-type: freestyle
+
+    scm:
+      - qa-python-scm
+
+    wrappers:
+      - timestamps
+      - workspace-cleanup
+
+    triggers:
+      - pollscm:
+          cron: "* * * * *"
+
+    builders:
+      - shell: |
+          mkdir $WORKSPACE/allure_results
+          cd src/qa-python/lection11/code/tests/
+          pytest -s -l -v test_base.py --alluredir=$WORKSPACE/allure_results
+
+    publishers:
+      - allure:
+          result-path:
+            - path: allure_results
+          report-build-policy: ALWAYS
