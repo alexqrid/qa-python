@@ -15,8 +15,8 @@ def test2_positive():
 
 
 def test3_negative():
-    assert 8 // 4 == 3
+    assert 8 // 4 == 2
 
 
 def test4_negative():
-    assert '*' * 4 == '***'
+    assert '*' * 4 == '****'
