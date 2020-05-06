@@ -23,7 +23,7 @@ pipeline {
             steps {
                 sh 'cd lection11/code/tests/'
                 dir('lection11/code/tests/') {
-                    sh "pytest -s -l -v test_simple.py --alluredir=$WORKSPACE/allure-results"
+                    sh "pytest -s -l -v test_base.py --alluredir=$WORKSPACE/allure-results"
                 }
             }
         }

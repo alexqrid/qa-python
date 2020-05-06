@@ -10,7 +10,7 @@
             credentials-id: 7445ece3-d16f-482c-bef5-eac05a67bd7d
             branches:
               - origin/lection11_2
-        script-path: "lection11/jenkins_files/simple-pipeline.groovy"
+      script-path: "lection11/jenkins_files/simple-pipeline.groovy"
 
 
     wrappers:
