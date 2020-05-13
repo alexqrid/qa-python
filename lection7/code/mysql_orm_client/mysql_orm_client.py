@@ -14,8 +14,33 @@ class MysqlOrmConnection:
 
         self.connection = self.connect()
 
-        session = sessionmaker(bind=self.connection.engine)
+        session = sessionmaker(bind=self.connection.engine, 
+                               autocommit=True,
+                               autoflush=True,
+                               enable_baked_queries=False,
+                               expire_on_commit=True)
+        
+  
         self.session = session()
+    
+        #model = Model()
+        #model.id = 1
+        
+        #self.session.add(model)
+        #self.session.commit()
+        
+        # 1 -> 2
+        
+        
+        #model.id  # 1
+        #self.session.query(Model).all()  # 1
+        
+        #self.session.expire(model)
+        #self.session.expire_all()
+        #self.id  # 2
+        
+        
+    
 
     def get_connection(self, db_created=False):
         engine = sqlalchemy.create_engine(
