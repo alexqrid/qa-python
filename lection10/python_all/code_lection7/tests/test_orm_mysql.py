@@ -2,9 +2,9 @@ from random import randint
 
 import pytest
 
-from models.models import Prepod, Student
+from models.models import Student
 from mysql_orm_client.mysql_orm_client import MysqlOrmConnection
-from tests.orm_builder import MysqlOrmBuilder
+from mysql_orm_client.orm_builder import MysqlOrmBuilder
 
 
 class TestOrmMysql:
